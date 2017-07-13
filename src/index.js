@@ -9,9 +9,9 @@ render(
     //adding properties to our component
     < RunDayList days={
         [
-            {location: "Weavind Park", date: new Date("06/22/2015"), run: true, street: "Osbourne Rd", weather: "rainy"},
-            {location: "Weavind Park", date: new Date("07/26/2016"), run: true, street: "Cresswell St", weather: "cold"},
-            {location: "Weavind Park", date: new Date("09/30/2016"), run: true, street: "Ripley Rd", weather: "sunny"}
+            {location: "Silverton", date: new Date("06/22/2015"), hill: true, street: "Pitts", rain: true},
+            {location: "Silverton", date: new Date("07/26/2016"), hill: false, street: "Cresswell", rain: true},
+            {location: "Silverton", date: new Date("09/30/2016"), hill: true, street: "Ripley", rain: false}
         ]
     }/>,
     document.getElementById('react-container') //where we wanna render the element
