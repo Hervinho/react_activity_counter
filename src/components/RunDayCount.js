@@ -36,10 +36,16 @@ export const RunDayCount = ({total, weather, location, goal}) => (//can use () i
 )
 
 RunDayCount.defaultProps = {
-    total: 50, weather: 10, location: "Pretoria", goal: 50
+    total: 50, 
+    weather: 10, 
+    location: "Pretoria", 
+    goal: 50
 }
 
 //setting types for all properties
 RunDayCount.propTypes = {
-    total: PropTypes.number, weather: PropTypes.number, location: PropTypes.string, goal: PropTypes.number
+    total: PropTypes.number, 
+    weather: PropTypes.number, 
+    location: PropTypes.string, 
+    goal: PropTypes.number
 }
