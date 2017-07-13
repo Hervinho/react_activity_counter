@@ -16,8 +16,12 @@ export const RunDayList = ({days}) => (
             </tr>
         </thead>
         <tbody>
-            {days.map((day, i) => <RunDayRow key = {i}
-                                             {... day} /> )}
+            {
+                days.map(
+                    (day, i) => <RunDayRow key = {i}
+                                           {... day} /> 
+                        )
+            }
         </tbody>
     </table>
 

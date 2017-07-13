@@ -33,3 +33,7 @@ export const RunDayCount = ({total, weather, location, goal}) => (//can use () i
             </div>
     </div>
 )
+
+RunDayCount.defaultProps = {
+    total: 50, weather: 10, location: "Pretoria", goal: 50
+}
