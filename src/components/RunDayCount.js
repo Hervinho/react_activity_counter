@@ -1,38 +1,28 @@
-import {Component} from 'react'
 import '../stylesheets/ui.scss'
 
-//React class
-//export const RunDayCount = React.createClass({
-    export class RunDayCount extends Component{ //Using ES6 class syntax
-    //methods to do calculations
-    percentToDecimal(decimal){
-        return ((decimal * 100) + '%')
-    }
+//methods to do calculations
+const percentToDecimal = (decimal) => ((decimal * 100) + '%')
 
-    calculateGoalProgress(total, goal){
-        return this.percentToDecimal(total/goal)
-    }
+const calculateGoalProgress = (total, goal) => percentToDecimal(total/goal)
 
-    render(){
-        //return HTML element using JSX
-        return(
-            <div className="run-day-count">
-                <div className="total-days">
-                    <span>{this.props.total}</span>
-                    <span> days</span>
-                </div>
-                <div className="rainy-days">
-                    <span>{this.props.weather}</span>
-                    <span> days</span>
-                </div>
-                <div className="sprint-days">
-                    <span>{this.props.location}</span>
-                </div>
-                <div className="sprint-days">
-                    <span>{this.calculateGoalProgress(this.props.total, this.props.goal)}</span>
-                </div>
-                
+
+//Stateless component: use destructuring to select properties to be used in this fuunction.
+export const RunDayCount = ({total, weather, location, goal}) => (//can use () if only returning JSX element
+    
+    <div className="run-day-count">
+            <div className="total-days">
+                <span>{total}</span>
+                <span> days</span>
             </div>
-        )
-    }
-}
+            <div className="rainy-days">
+                <span>{weather}</span>
+                <span> days</span>
+            </div>
+            <div className="sprint-days">
+                <span>{location}</span>
+            </div>
+            <div className="sprint-days">
+                <span>{calculateGoalProgress(total, goal)}</span>
+            </div>
+    </div>
+)
