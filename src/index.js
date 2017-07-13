@@ -15,6 +15,6 @@ render(
             {location: "Silverton", date: new Date("09/30/2016"), hill: true, street: "Ripley", rain: false}
         ]
     }/>,*/
-    < RunDayCount />,
+    < RunDayCount total="me"/>,
     document.getElementById('react-container') //where we wanna render the element
 )
