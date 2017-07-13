@@ -8,13 +8,19 @@ export const RunDayCount = React.createClass({
         return(
             <div className="run-day-count">
                 <div className="total-days">
-                    <span>1 day</span>
+                    <span>{this.props.total}</span>
+                    <span> days</span>
                 </div>
                 <div className="rainy-days">
-                    <span>1 day</span>
+                    <span>{this.props.weather}</span>
+                    <span> days</span>
                 </div>
                 <div className="sprint-days">
-                    <span>1 day</span>
+                    <span>{this.props.location}</span>
+                </div>
+                <div className="sprint-days">
+                    <span>Goal: </span>
+                    <span>{this.props.goal}</span>
                 </div>
                 
             </div>
