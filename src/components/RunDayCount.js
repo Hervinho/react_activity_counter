@@ -1,15 +1,18 @@
-import React from 'react'
+import {Component} from 'react'
 import '../stylesheets/ui.scss'
 
 //React class
-export const RunDayCount = React.createClass({
+//export const RunDayCount = React.createClass({
+    export class RunDayCount extends Component{ //Using ES6 class syntax
     //methods to do calculations
     percentToDecimal(decimal){
         return ((decimal * 100) + '%')
-    },
+    }
+
     calculateGoalProgress(total, goal){
         return this.percentToDecimal(total/goal)
-    },
+    }
+
     render(){
         //return HTML element using JSX
         return(
@@ -32,4 +35,4 @@ export const RunDayCount = React.createClass({
             </div>
         )
     }
-})
+}
