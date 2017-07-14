@@ -3,6 +3,7 @@ import {RunDayList} from './RunDayList'
 import {RunDayCount} from './RunDayCount'
 import {AddDay} from './AddDay'
 import {Oops} from './Oops'
+import {Menu} from './Menu'
 
 export class App extends Component{
     //initialize default state with ES6 class constructor
@@ -25,15 +26,16 @@ export class App extends Component{
     render(){
         return (
             <div className="app">
+                <Menu />
                 {
-                    //if pathanem === "/"
+                    //if pathname === "/"
                     (this.props.location.pathname === "/") ? 
                         <RunDayCount 
                             total={this.countDays()} 
                             hill={this.countDays("hill")} 
                             rain={this.countDays("rain")} goal={100} /> : 
 
-                    //else if pathanem === "/add"
+                    //else if pathaname === "/add"
                     (this.props.location.pathname === "/add") ? <AddDay /> :
 
                     //else if pathname === "/list"
