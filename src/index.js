@@ -25,6 +25,7 @@ render(
         <div>
             <Route path="/" component={App} />
             <Route path="list" component={App} />
+            <Route path="add" component={AddDay} />
             
         </div>
     </HashRouter>,

@@ -4,6 +4,7 @@ import {RunDayCount} from './RunDayCount'
 import {AddDay} from './AddDay'
 import {Oops} from './Oops'
 import {Menu} from './Menu'
+import { NavLink } from 'react-router-dom'
 
 export class App extends Component{
     //initialize default state with ES6 class constructor
@@ -12,7 +13,7 @@ export class App extends Component{
         this.state = {
             allRunDays: [
                 {location: "Silverton", date: new Date("06/22/2015"), hill: true, street: "Pitts", rain: true},
-                {location: "Silverton", date: new Date("07/26/2016"), hill: false, street: "Cresswell", rain: false},
+                {location: "Silverton", date: new Date("07/26/2016"), hill: false, street: "Cresswell", rain: true},
                 {location: "Silverton", date: new Date("09/30/2016"), hill: true, street: "Ripley", rain: false}
             ]
         }
@@ -39,7 +40,8 @@ export class App extends Component{
                     (this.props.location.pathname === "/add") ? <AddDay /> :
 
                     //else if pathname === "/list"
-                    (this.props.location.pathname === "/list") ? <RunDayList days={this.state.allRunDays}/> :
+                    (this.props.location.pathname === "/list") ? 
+                        <RunDayList days={this.state.allRunDays} filter={this.props.filter}/> :
 
                     //else
                      <Oops />
@@ -49,5 +51,4 @@ export class App extends Component{
         )
     }
 }
-//<RunDayList days={this.state.allRunDays}/>
-//<RunDayCount total={this.countDays()} hill={this.countDays("hill")} rain={this.countDays("rain")} goal={100} />
+
