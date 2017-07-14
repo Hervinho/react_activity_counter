@@ -4,7 +4,7 @@ import {RunDayList} from './components/RunDayList'
 import {RunDayCount} from './components/RunDayCount'
 import {App} from './components/App'
 import {Oops} from './components/Oops'
-//import {Router, Route, hashHistory} from 'react-router'
+import {AddDay} from './components/AddDay'
 import { HashRouter, Route } from 'react-router-dom'
 
 window.React = React//to avoid errors such as 'React is not defined'
@@ -24,7 +24,8 @@ render(
     <HashRouter>
         <div>
             <Route path="/" component={App} />
-            <Route path="*" component={Oops} />
+            <Route path="list" component={App} />
+            
         </div>
     </HashRouter>,
     document.getElementById('react-container') //where we wanna render the element

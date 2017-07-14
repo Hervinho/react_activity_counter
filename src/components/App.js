@@ -1,6 +1,8 @@
 import {Component} from 'react'
 import {RunDayList} from './RunDayList'
 import {RunDayCount} from './RunDayCount'
+import {AddDay} from './AddDay'
+import {Oops} from './Oops'
 
 export class App extends Component{
     //initialize default state with ES6 class constructor
@@ -23,9 +25,27 @@ export class App extends Component{
     render(){
         return (
             <div className="app">
-                <RunDayList days={this.state.allRunDays}/>
-                <RunDayCount total={this.countDays()} hill={this.countDays("hill")} rain={this.countDays("rain")} goal={100} />
+                {
+                    //if pathanem === "/"
+                    (this.props.location.pathname === "/") ? 
+                        <RunDayCount 
+                            total={this.countDays()} 
+                            hill={this.countDays("hill")} 
+                            rain={this.countDays("rain")} goal={100} /> : 
+
+                    //else if pathanem === "/add"
+                    (this.props.location.pathname === "/add") ? <AddDay /> :
+
+                    //else if pathname === "/list"
+                    (this.props.location.pathname === "/list") ? <RunDayList days={this.state.allRunDays}/> :
+
+                    //else
+                     <Oops />
+                }
+
             </div>
         )
     }
 }
+//<RunDayList days={this.state.allRunDays}/>
+//<RunDayCount total={this.countDays()} hill={this.countDays("hill")} rain={this.countDays("rain")} goal={100} />
