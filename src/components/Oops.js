@@ -1,0 +1,1 @@
+export const Oops = () => <div><h1>404. Route not found</h1></div>

@@ -3,6 +3,9 @@ import {render} from 'react-dom' //render property comes from React DOM
 import {RunDayList} from './components/RunDayList'
 import {RunDayCount} from './components/RunDayCount'
 import {App} from './components/App'
+import {Oops} from './components/Oops'
+//import {Router, Route, hashHistory} from 'react-router'
+import { HashRouter, Route } from 'react-router-dom'
 
 window.React = React//to avoid errors such as 'React is not defined'
 
@@ -16,7 +19,13 @@ render(
             {location: "Silverton", date: new Date("09/30/2016"), hill: true, street: "Ripley", rain: false}
         ]
     }/>,
-    < RunDayCount total="me"/>,*/
-    <App />,
+    < RunDayCount total="me"/>,
+    <App />,*/
+    <HashRouter>
+        <div>
+            <Route path="/" component={App} />
+            <Route path="*" component={Oops} />
+        </div>
+    </HashRouter>,
     document.getElementById('react-container') //where we wanna render the element
 )
