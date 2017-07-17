@@ -12,16 +12,24 @@ export class App extends Component{
         super(props)
         this.state = {
             allRunDays: [
-                {location: "Silverton", date: new Date("06/22/2015"), hill: true, street: "Pitts", rain: true},
-                {location: "Silverton", date: new Date("07/26/2016"), hill: false, street: "Cresswell", rain: true},
-                {location: "Silverton", date: new Date("09/30/2016"), hill: true, street: "Ripley", rain: false}
+                {location: "Silverton", date: "06/22/2015", hill: true, street: "Pitts", rain: true}/*,
+                {location: "Silverton", date: "07/26/2016", hill: false, street: "Cresswell", rain: true},
+                {location: "Kinshasa", date: "09/30/2016", hill: true, street: "Boulevard du 30 Juin", rain: false}*/
             ]
         }
+        this.addDay = this.addDay.bind(this)
     }
 
     countDays(filter){
         const {allRunDays} = this.state
         return allRunDays.filter((day) => (filter) ? day[filter] : day).length // (if(filter) return day[filter]. else return day ).length
+    }
+
+    addDay(newDay){//this fnction will just add the new day to the state (from the form)
+        this.setState({
+            //runDays: this.state.allRunDays.concat({location: "Kinshasa", date: "09/30/2016", hill: true, street: "Boulevard du 30 Juin", rain: false}),
+            allRunDays: [...this.state.allRunDays, newDay]
+        })
     }
 
     render(){
@@ -37,7 +45,7 @@ export class App extends Component{
                             rain={this.countDays("rain")} goal={100} /> : 
 
                     //else if pathaname === "/add"
-                    (this.props.location.pathname === "/add") ? <AddDay /> :
+                    (this.props.location.pathname === "/add") ? <AddDay onNewDay={this.addDay}/> :
 
                     //else if pathname === "/list"
                     (this.props.location.pathname === "/list") ? 

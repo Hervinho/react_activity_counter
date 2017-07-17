@@ -1,17 +1,28 @@
-import {PropTypes, Component} from 'react'
+import {PropTypes} from 'react'
 
-export const AddDay = (location, date, street, hill, rain) => { //initialize with defalut values in AddDay.defaultProps
+export const AddDay = (location, date, street, hill, rain, onNewDay) => { //initialize with defalut values in AddDay.defaultProps
     let _date, _hill, _location, _rain, _street
-    console.log('Pamars: ', location.date)
+    console.log('Pamars: ', date)
     
     //submit method
     const submit = (e) => {
         e.preventDefault() //this prevents default form behavior of clearing out
-        console.log('Location: ', _location.value) //refs ensures parent components can access children
-        console.log('Date: ', _date.value)
-        console.log('Street: ', _street.value)
-        console.log('Hill: ', _hill.checked)
-        console.log('Rain: ', _rain.checked)
+        onNewDay = () => {
+            location: _location.value
+            date: _date.value
+            street: _street.value
+            hill: _hill.checked
+            rain: _rain.checked
+        }
+
+        //after submission, reset values.
+        _location.value = ''
+        _date.value = ''
+        _street.value = ''
+        _hill.checked = false
+        _rain.checked = false
+        //console.log(_location.value);
+
     }
 
     //ref={input => _location = input} : set whatever content of the input filed in the _reference variable
@@ -22,7 +33,7 @@ export const AddDay = (location, date, street, hill, rain) => { //initialize wit
                 <input id="location" type="text" defaultValue={location.location} ref={input => _location = input}/> 
 
                 <label htmlFor="date">Date</label>
-                <input id="date" type="date" defaultValue={location.date} ref={input => _date = input}/>
+                <input id="date" type="text" defaultValue={location.date} ref={input => _date = input}/>
 
                 <label htmlFor="street">Street Name</label>
                 <input id="street" type="text" defaultValue={location.street} ref={input => _street = input}/>
@@ -46,7 +57,7 @@ export const AddDay = (location, date, street, hill, rain) => { //initialize wit
 
 AddDay.defaultProps = {
     location: "Somewhere",
-    date: "2017-01-01",
+    date: "01/07/2017",
     hill: true,
     street: "Street name",
     rain: false

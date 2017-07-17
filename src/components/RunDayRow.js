@@ -6,7 +6,7 @@ import {PropTypes} from 'react'
 
 export const RunDayRow = ({location, date, hill, street, rain}) => (//can use () if only returning JSX element
     <tr>
-        <td>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</td>
+        <td>{date}</td>
         <td>{location}</td>
         <td>{street}</td>
         <td>{(hill) ? <Terrain/> : null}</td>
@@ -16,7 +16,7 @@ export const RunDayRow = ({location, date, hill, street, rain}) => (//can use ()
 
 //setting types for all properties
 RunDayRow.propTypes = {
-    date: PropTypes.instanceOf(Date).isRequired, 
+    date: PropTypes.string.isRequired, 
     hill: PropTypes.bool.isRequired, 
     location: PropTypes.string.isRequired, 
     street: PropTypes.string.isRequired,
