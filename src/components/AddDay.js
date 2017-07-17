@@ -1,55 +1,52 @@
 import {PropTypes, Component} from 'react'
 
-export class AddDay extends Component{
-    //Constructor
-    constructor(props){
-        super(props)
-        this.submit = this.submit.bind(this) //to make sure custom method with *this* can be accessible with JSX
-    }
+export const AddDay = (location, date, street, hill, rain) => { //initialize with defalut values in AddDay.defaultProps
+    let _date, _hill, _location, _rain, _street
+    console.log('Pamars: ', location.date)
+    
     //submit method
-    submit(e){
+    const submit = (e) => {
         e.preventDefault() //this prevents default form behavior of clearing out
-        console.log('Location: ', this.refs.location.value) //refs ensures parent components can access children
-        console.log('Date: ', this.refs.date.value)
-        console.log('Street: ', this.refs.street.value)
-        console.log('Hill: ', this.refs.hill.checked)
-        console.log('Rain: ', this.refs.rain.checked)
+        console.log('Location: ', _location.value) //refs ensures parent components can access children
+        console.log('Date: ', _date.value)
+        console.log('Street: ', _street.value)
+        console.log('Hill: ', _hill.checked)
+        console.log('Rain: ', _rain.checked)
     }
 
-    render(){
-        const {location, date, street, hill, rain} = this.props //initialize with defalut values in AddDay.defaultProps
-
+    //ref={input => _location = input} : set whatever content of the input filed in the _reference variable
+    //i.e. this.refs. = _
         return (
-            <form className="add-day" onSubmit={this.submit}>
+            <form className="add-day" onSubmit={submit}>
                 <label htmlFor="location">Location Name</label>
-                <input id="location" type="text" defaultValue={location} required ref="location"/>
+                <input id="location" type="text" defaultValue={location.location} ref={input => _location = input}/> 
 
                 <label htmlFor="date">Date</label>
-                <input id="date" type="date" defaultValue={date} required ref="date"/>
+                <input id="date" type="date" defaultValue={location.date} ref={input => _date = input}/>
 
                 <label htmlFor="street">Street Name</label>
-                <input id="street" type="text" defaultValue={street} required ref="street"/>
+                <input id="street" type="text" defaultValue={location.street} ref={input => _street = input}/>
 
                 <div>
-                     <input id="hill" type="checkbox" defaultChecked={hill} required ref="hill"/>
+                     <input id="hill" type="checkbox" defaultChecked={location.hill} ref={input => _hill = input}/>
                     <label htmlFor="hill">Hill Day</label>
                 </div>
                 
 
                 <div>
-                    <input id="rain" type="checkbox" defaultChecked={rain} required ref="rain"/>
+                    <input id="rain" type="checkbox" defaultChecked={location.rain} ref={input => _rain = input}/>
                     <label htmlFor="rain">Rain Day</label>
                 </div>
 
                 <button>Add Day</button>
             </form>
         )
-    }
 }
+
 
 AddDay.defaultProps = {
     location: "Somewhere",
-    date: "01/01/2017",
+    date: "2017-01-01",
     hill: true,
     street: "Street name",
     rain: false
